@@ -37,11 +37,11 @@ export const IngredientDetails = () => {
 					<p>Running low: {ingredient?.runningLow ? "yes" : "no" }</p>
                     <p>Expiration date: {ingredient?.expirationDate}</p>
 					<p>Ingredient Foods:</p>
-					<ul>
+					{/* <ul>
 						{ingredient?.foods?.map((food) => (
 							<li key={food.foodId}>{food.foodId}</li>
 						))}
-					</ul>
+					</ul> */}
 				</CardContent>
 				<CardActions>
 					<IconButton component={Link} sx={{ mr: 3 }} to={`/ingredients/${id}/edit`}>

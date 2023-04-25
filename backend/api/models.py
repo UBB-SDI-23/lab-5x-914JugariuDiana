@@ -19,23 +19,6 @@ class Chef(models.Model):
     def __str__(self):
         return self.firstName + self.lastName
 
-class Ingredient(models.Model):
-    def validateQuantity(value):
-        if value < 0:
-            raise ValidationError("This field does not accept values smaller than 0")
-        else:
-            return value
-            
-
-    ingredientName = models.CharField(max_length=100)
-    location = models.CharField(max_length=200)
-    runningLow = models.BooleanField()
-    expirationDate = models.CharField(max_length=20)
-    quantity = models.IntegerField(validators=[validateQuantity])
-
-    def __str__(self):
-        return self.ingredientName
-
 class Food(models.Model):
     def validateDates(value):
         if datetime.date.today() < (value):
@@ -53,6 +36,24 @@ class Food(models.Model):
     
     def __str__(self):
         return self.foodName
+
+class Ingredient(models.Model):
+    def validateQuantity(value):
+        if value < 0:
+            raise ValidationError("This field does not accept values smaller than 0")
+        else:
+            return value
+            
+
+    ingredientName = models.CharField(max_length=100)
+    location = models.CharField(max_length=200)
+    runningLow = models.BooleanField()
+    expirationDate = models.CharField(max_length=20)
+    quantity = models.IntegerField(validators=[validateQuantity])
+    # foods = models.ManyToManyField(Food, through="ReceipeIndications")
+
+    def __str__(self):
+        return self.ingredientName
 
     
 class ReceipeIndications(models.Model):
