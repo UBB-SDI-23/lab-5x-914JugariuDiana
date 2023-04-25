@@ -12,9 +12,9 @@ urlpatterns = [
     path('ingredients/<int:pk>/', views.IngredientDetail.as_view()),
     path('recipe/', views.ReceipeIndicationsList.as_view()),
     path('recipe/<int:pk>/', views.ReceipeIndicationsDetail.as_view()), 
-    path('filterIngredients/', views.IngredientQuantity.as_view()),
-    path('orderChefs/', views.OrderChefs.as_view()),
-    path('orderFoods/', views.OrderFood.as_view()),
+    path('ingredients/ingredientFilter/', views.IngredientQuantity.as_view()),
+    path('chef/orderChefs/', views.OrderChefs.as_view()),
+    path('food/orderFoods/', views.OrderFood.as_view()),
     path('chef/<int:pk>/food/', views.FoodForChef.as_view()),
 ]
 

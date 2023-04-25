@@ -30,7 +30,7 @@ class Ingredient(models.Model):
     ingredientName = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
     runningLow = models.BooleanField()
-    expirationDate = models.DateField()
+    expirationDate = models.CharField(max_length=20)
     quantity = models.IntegerField(validators=[validateQuantity])
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Ingredient(models.Model):
 
 class Food(models.Model):
     def validateDates(value):
-        if datetime.date.today() < value:
+        if datetime.date.today() < (value):
             return value
         else:
             raise ValidationError("This field does not accept dates that have past")
@@ -47,7 +47,7 @@ class Food(models.Model):
     foodName = models.CharField(max_length=100)
     proteinGrams = models.IntegerField()
     sugarGrams = models.IntegerField()
-    expirationDate = models.DateField(validators=[validateDates])
+    expirationDate = models.CharField(max_length=20)
     quantity = models.IntegerField()
     chefCreator = models.ForeignKey(Chef, related_name='foods', on_delete=models.CASCADE)
     
