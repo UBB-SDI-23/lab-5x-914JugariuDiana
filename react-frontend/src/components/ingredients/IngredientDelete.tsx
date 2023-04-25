@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Container, Card, CardContent, IconButton, CardActions, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios';
 import {BACKEND_API_URL} from "../../constants";
 
 

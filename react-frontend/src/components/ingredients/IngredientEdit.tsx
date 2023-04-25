@@ -1,5 +1,5 @@
 import { Button, Card, CardActions, CardContent, Container, FormLabel, IconButton, TextField, colors, Checkbox } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BACKEND_API_URL } from "../../constants";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

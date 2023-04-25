@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Ingredient} from "../../models/Ingredient";
 import {BACKEND_API_URL} from "../../constants";
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios';
 import { Button, Card, CardActions, CardContent, IconButton, TextField, Checkbox } from "@mui/material";
 import DatePicker from "react-datepicker";
 import { Container } from "@mui/system";
