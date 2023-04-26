@@ -105,3 +105,11 @@ class FoodForChefsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
         fields = ['id']
+
+class IngredientSerializerVAR1(serializers.ModelSerializer):
+    foods = FoodNameSerializer(many = True, read_only=True)
+    class Meta:
+        model = Ingredient
+        fields = ['id', 'ingredientName', 'location', 'runningLow', 'expirationDate', 'quantity', 'foods']
+
+

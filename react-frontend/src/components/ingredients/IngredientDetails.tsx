@@ -7,6 +7,8 @@ import {Ingredient} from "../../models/Ingredient";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Food } from "../../models/Food";
+import { Recipe } from "../../models/Recipe";
 
 export const IngredientDetails = () => {
 	const { id } = useParams();
@@ -36,12 +38,7 @@ export const IngredientDetails = () => {
 					<p>Ingredient quantity: {ingredient?.quantity}</p>
 					<p>Running low: {ingredient?.runningLow ? "yes" : "no" }</p>
                     <p>Expiration date: {ingredient?.expirationDate}</p>
-					<p>Ingredient Foods:</p>
-					{/* <ul>
-						{ingredient?.foods?.map((food) => (
-							<li key={food.foodId}>{food.foodId}</li>
-						))}
-					</ul> */}
+					
 				</CardContent>
 				<CardActions>
 					<IconButton component={Link} sx={{ mr: 3 }} to={`/ingredients/${id}/edit`}>

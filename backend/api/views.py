@@ -2,7 +2,7 @@ from rest_framework import generics, status, views
 from .models import Food, Chef, Ingredient, ReceipeIndications
 from .serializers import FoodSerializer, ChefSerializer, IngredientSerializer, ChefSerializerDetail, \
      ReceipeIndicationsSerializer, ChefFoodSerializer,\
-    FoodIngredientSerializer, FoodDetailSerializer, FoodForChefsSerializer#, IngredientFoodSerializer/*FoodSerializerDetail,
+    FoodIngredientSerializer, FoodDetailSerializer, FoodForChefsSerializer, IngredientSerializerVAR1#, IngredientFoodSerializer/*FoodSerializerDetail,
 
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
@@ -62,7 +62,7 @@ class OrderFood(generics.ListCreateAPIView):
         return queryset
     
 class IngredientDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = IngredientSerializer
+    serializer_class = IngredientSerializerVAR1
     queryset = Ingredient.objects.all()
 
 class FoodForChef(views.APIView):

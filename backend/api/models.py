@@ -50,7 +50,7 @@ class Ingredient(models.Model):
     runningLow = models.BooleanField()
     expirationDate = models.CharField(max_length=20)
     quantity = models.IntegerField(validators=[validateQuantity])
-    # foods = models.ManyToManyField(Food, through="ReceipeIndications")
+    foods = models.ManyToManyField(Food, related_name= "ingredients", through="ReceipeIndications")
 
     def __str__(self):
         return self.ingredientName
