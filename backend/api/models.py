@@ -13,7 +13,7 @@ class Chef(models.Model):
     firstName = models.CharField(max_length=100, validators=[validateNames])
     lastName = models.CharField(max_length=100, validators=[validateNames])
     prizes = models.IntegerField()
-    dob = models.DateField(auto_now_add=True)
+    dob = models.CharField(max_length=100)
     cnp = models.CharField(max_length=20, unique=True)
 
     def __str__(self):

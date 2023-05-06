@@ -1,3 +1,4 @@
+import { Food } from "./Food";
 import { Recipe } from "./Recipe";
 
 export interface Ingredient{
@@ -7,5 +8,5 @@ export interface Ingredient{
     runningLow: boolean;
     expirationDate: string;
     quantity: number;
-    foods?: Recipe[];
+    foods?: Food[];
 }

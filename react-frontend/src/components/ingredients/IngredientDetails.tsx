@@ -38,7 +38,12 @@ export const IngredientDetails = () => {
 					<p>Ingredient quantity: {ingredient?.quantity}</p>
 					<p>Running low: {ingredient?.runningLow ? "yes" : "no" }</p>
                     <p>Expiration date: {ingredient?.expirationDate}</p>
-					
+					<p>Ingredient Foods:</p>
+					<ul>
+						{ingredient?.foods?.map((food, index) => (
+							<li key={index}>{food.foodName}</li>
+						))}
+					</ul>
 				</CardContent>
 				<CardActions>
 					<IconButton component={Link} sx={{ mr: 3 }} to={`/ingredients/${id}/edit`}>
