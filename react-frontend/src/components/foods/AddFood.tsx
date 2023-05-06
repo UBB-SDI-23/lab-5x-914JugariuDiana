@@ -10,13 +10,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { number } from "prop-types";
 import {debounce} from "lodash";
 
-// id: number;
-//     foodName: string;
-//     proteinGrams: number;
-//     sugarGrams: number;
-//     expirationDate: Date;
-//     quantity: number;
-//     chefCreator: Chef;
 export const AddFood = () =>{
     const navigate = useNavigate();
 
@@ -36,6 +29,11 @@ export const AddFood = () =>{
 
     const fetchSuggestions = async (query: string) => {
         try {
+            // const response = await axios.get<Chef[]> (
+            //     `${BACKEND_API_URL}/chef/autocomplete?query=${query}`);
+
+            // const data = await response.data;
+            // setChef(data);
             const currentLastGetAuthorsCall = lastGetChefsCall;
             setLastGetChefsCall((prev) => prev + 1);
             console.log("giees");
@@ -45,14 +43,14 @@ export const AddFood = () =>{
                 `${BACKEND_API_URL}/chef/autocomplete/?query=${query}`
             );
             const data = await response.data;
-
-            if (currentLastGetAuthorsCall === lastGetChefsCall) setChef(data);
+            if (currentLastGetAuthorsCall === lastGetChefsCall) 
+                setChef(data);
         } catch (error) {
             console.log(error);
         }
     };
 
-    const debouncedFetchSuggestions = useCallback(debounce(fetchSuggestions, 5), []);
+    const debouncedFetchSuggestions = useCallback(debounce(fetchSuggestions, 100), []);
 
     useEffect(() => {
         return () => {
@@ -133,7 +131,7 @@ export const AddFood = () =>{
                             options={chefs}
                             filterOptions={(x) => x}
                             getOptionLabel={(option) =>
-                                option.firstName + " " + option.lastName
+                                option.firstName + " " + option.lastName + " " + option.prizes
                             }
                             onInputChange={(e, value) => debouncedFetchSuggestions(value)}
                             renderInput={(params) => (

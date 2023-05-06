@@ -1,6 +1,6 @@
 from rest_framework import generics, status, views
 from .models import Food, Chef, Ingredient, ReceipeIndications
-from .serializers import FoodSerializer, ChefSerializer, IngredientSerializer, ChefSerializerDetail, \
+from .serializers import ChefDataSerializer, FoodSerializer, ChefSerializer, IngredientSerializer, ChefSerializerDetail, \
      ReceipeIndicationsSerializer, ChefFoodSerializer,\
     FoodIngredientSerializer, FoodDetailSerializer, FoodForChefsSerializer, IngredientSerializerVAR1#, IngredientFoodSerializer/*FoodSerializerDetail,
 
@@ -75,6 +75,14 @@ class FoodForChef(views.APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_204_NO_CONTENT)
 
-            
+class ChefViewForAutocomplete(views.APIView):
+    serialize_class = ChefDataSerializer
+
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('query')
+        chefs = Chef.objects.filter(name__icontains=query).order_by('name')[:20]
+        serializer = ChefDataSerializer(chefs, many=True)
+        return Response(serializer.data)
+
     
 
